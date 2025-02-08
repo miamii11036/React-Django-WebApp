@@ -48,6 +48,7 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = { 
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30), #存取Token的有效時限為30分鐘
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1), #更新Token的有效時限為1天
+    
 }
 
 # Application definition

@@ -37,7 +37,7 @@ class UserSerializer(serializers.ModelSerializer):
             logger.error("使用者名稱與密碼資料檢查空值時發生錯誤: %s", str(e), exc_info=True)
         return data
     
-    def validate_username(self, value):
+    def validate_username(self, value): 
         """
         檢查username是否已經儲存在資料庫
         """
