@@ -1,0 +1,5 @@
+ERROR 2025-02-08 03:50:50,236 serializers 使用者名稱與密碼資料檢查空值時發生錯誤: [ErrorDetail(string='password field cannot be empty', code='invalid')]
+Traceback (most recent call last):
+  File "/home/ubuntu/React-Django-WebApp/backend/api/serializers.py", line 35, in validate_empty_values
+    raise serializers.ValidationError("password field cannot be empty")
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='password field cannot be empty', code='invalid')]
