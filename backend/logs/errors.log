@@ -3,3 +3,23 @@ Traceback (most recent call last):
   File "/home/ubuntu/React-Django-WebApp/backend/api/serializers.py", line 35, in validate_empty_values
     raise serializers.ValidationError("password field cannot be empty")
 rest_framework.exceptions.ValidationError: [ErrorDetail(string='password field cannot be empty', code='invalid')]
+ERROR 2025-02-08 16:20:05,184 serializers 建立並傳送使用者資料到資料庫時發生錯誤: UserManager.create_user() got multiple values for argument 'username'
+Traceback (most recent call last):
+  File "/home/ubuntu/React-Django-WebApp/backend/api/serializers.py", line 58, in create
+    user = CustomUser.objects.create_user(
+TypeError: UserManager.create_user() got multiple values for argument 'username'
+ERROR 2025-02-08 16:21:59,759 serializers 建立並傳送使用者資料到資料庫時發生錯誤: UserManager.create_user() got multiple values for argument 'username'
+Traceback (most recent call last):
+  File "/home/ubuntu/React-Django-WebApp/backend/api/serializers.py", line 58, in create
+    user = CustomUser.objects.create_user(
+TypeError: UserManager.create_user() got multiple values for argument 'username'
+ERROR 2025-02-08 16:47:34,773 serializers 使用者名稱與密碼資料檢查空值時發生錯誤: [ErrorDetail(string='username field cannot be empty', code='invalid')]
+Traceback (most recent call last):
+  File "/home/ubuntu/React-Django-WebApp/backend/api/serializers.py", line 33, in validate_empty_values
+    raise serializers.ValidationError("username field cannot be empty")
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='username field cannot be empty', code='invalid')]
+ERROR 2025-02-08 16:49:16,067 serializers 使用者名稱與密碼資料檢查空值時發生錯誤: [ErrorDetail(string='password field cannot be empty', code='invalid')]
+Traceback (most recent call last):
+  File "/home/ubuntu/React-Django-WebApp/backend/api/serializers.py", line 35, in validate_empty_values
+    raise serializers.ValidationError("password field cannot be empty")
+rest_framework.exceptions.ValidationError: [ErrorDetail(string='password field cannot be empty', code='invalid')]

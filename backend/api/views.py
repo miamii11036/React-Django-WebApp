@@ -11,7 +11,7 @@ from .permissions import ( #自定義的身份驗證
 from rest_framework.permissions import AllowAny, IsAuthenticated
 import logging #載入偵錯模組
 
-logger = logging.getLogger("django")
+logger = logging.getLogger("api")
 
 # Create your views here.
 

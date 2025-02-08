@@ -24,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
         }  # 為password欄位增加額外屬性（write_only只能在request時寫入，不會在API response時回傳），這樣回傳的JSON檔案會排除password欄位
         # 這代表用戶透過API傳入密碼給後端資料庫儲存，但API不能從資料庫讀取密碼
 
-    def validate_empty_values(self, data):
+    def validate(self, data):
         """
         檢查使用者名稱與密碼是否有空值
         """
@@ -55,17 +55,18 @@ class UserSerializer(serializers.ModelSerializer):
             就算資料是空值仍會視為驗證過
         """
         try:
+            # # is_staff(bool)表示用戶是否可以登入管理後台，用pop()移除此key，如果validated_data字典中沒有名為is_staff的key，則返回預設值None。避免駭客藉由API修改自己的帳號權限
+            is_staff = validated_data.get("is_staff", False) 
+            # # is_superuser表示用戶是否擁有所有權限，同理
+            is_superuser = validated_data.get("is_superuser", False)
+
             user = CustomUser.objects.create_user(
-                # is_staff(bool)表示用戶是否可以登入管理後台，用pop()移除此key，如果validated_data字典中沒有名為is_staff的key，則返回預設值None。避免駭客藉由API修改自己的帳號權限
-                validated_data.pop("is_staff", False),
-                # is_superuser表示用戶是否擁有所有權限，同理
-                validated_data.pop("is_superuser", False),
                 username=validated_data["username"],
                 password=validated_data["password"],
                 last_login=validated_data.get("last_login"),
-                role=validated_data.get(
-                    "role", UserRole.WAREHOUSE
-                ),  # 從validated_data字典中取得key為 role 的值，如果不存在key為role的值則預設Warehouse
+                role=validated_data.get("role", UserRole.WAREHOUSE),# 從validated_data字典中取得key為 role 的值，如果不存在key為role的值則預設Warehouse
+                is_staff=is_staff,
+                is_superuser=is_superuser,
             )
         except Exception as e:
             print(f"Error data: {validated_data}")
