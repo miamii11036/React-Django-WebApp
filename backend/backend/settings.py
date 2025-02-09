@@ -161,7 +161,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = ["http://localhost:8000"]
 
 #將Django預設的User model指定自定義的User model - CustomUser
-AUTH_USER_MODEL = "api.CustomUser"
+# AUTH_USER_MODEL = "api.CustomUser"
 
 #將Django運行時遇到的所有錯誤載入到errors.log中
 ERROR_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
