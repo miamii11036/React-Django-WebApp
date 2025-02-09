@@ -1,11 +1,11 @@
 # from rest_framework.permissions import (
 #     BasePermission, # 使用DRF提供的BasePermission讓使用者擴展權限類別，控制哪些用戶可以訪問或操作API
 # )
-# from .models import UserRole
 import logging #偵錯
 
 logger = logging.getLogger("api")
 
+#如果要使用權限分類的功能，記得取消備註
 # class IsWarehouseUser(BasePermission):
 #     """
 #     檢查該使用者是否通過JWT驗證且身份(role)是否為Warehouse
