@@ -32,6 +32,20 @@ class MemoListCreate(generics.ListCreateAPIView):
         """
         user = self.request.user
         return Memo.objects.filter(author=user)
+    
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            serializer.save(author=self.request.user)
+        else:
+            print(serializer.errors)
+    
+class MemoDelete(generics.DestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = MemoSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Memo.objects.filter(author=user)
 
 class CreateUserView(generics.CreateAPIView):
     """
