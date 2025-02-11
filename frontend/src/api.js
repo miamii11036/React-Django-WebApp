@@ -2,10 +2,8 @@
 import axios from 'axios'; //會檢查每一個傳送的request是否有token，如果有就會自動加上header
 import { ACCESS_TOKEN } from './constants';
 
-const apiUrl = "/djangoreactwebapp/backend/v1"
-
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiUrl,  //用於import前端.env檔案中的變數
+    baseURL: import.meta.env.VITE_API_URL   //用於import前端.env檔案中的變數
 });
 
 api.interceptors.request.use( //啟動axios的requests攔截器
