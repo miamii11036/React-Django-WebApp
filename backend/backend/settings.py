@@ -106,8 +106,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql', #使用PostgreSQL資料庫
+        'NAME': os.getenv("DB_NAME"), #從.env檔讀取DB_NAME
+        'USER': os.getenv("DB_USER"), #從.env檔讀取DB_USER
+        'PASSWORD': os.getenv("DB_PWD"), #從.env檔讀取DB_PASSWORD
+        'HOST': os.getenv("DB_HOST"), #從.env檔讀取DB_HOST
+        'PORT': os.getenv("DB_PORT"), #從.env檔讀取DB_PORT
     }
 }
 
